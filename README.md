@@ -14,7 +14,7 @@ polynomial [u]_q = 1 + q + q² + ... + q^(u−1) with u terms (a "q-integer"). T
 coefficients P_{m,n}(q) and the rational q-Fibonacci–Catalan functions C_{m,n}(q) of Bergeron, Ceballos and Küstner
 (SIGMA, 2020). For example
 
-C_{4,3}(q) = [8]_q [13]_q / [2]_q = 1 + q + 2q² + 2q³ + 3q⁴ + 2q⁵ + 3q⁶ + 2q⁷ + 2q⁸ + q⁹ + q¹⁰.
+C_{4,3}(q) = [5]_q [8]_q / [2]_q = 1 + q + 2q² + 2q³ + 3q⁴ + 2q⁵ + 3q⁶ + 2q⁷ + 2q⁸ + q⁹ + q¹⁰.
 
 **Why it matters.** When a formula like this turns out to be a polynomial with nonnegative coefficients,
 mathematicians expect it to count something, graded by the power of q. Bergeron, Ceballos and Küstner saw nonnegative

@@ -13,7 +13,9 @@ macOS-27.2.1-arm64.
 
 stderr was empty for the passing run, and the replay left `code/` and `results/` unchanged. The lead's earlier clean
 replay (24 November 2026, CPython 3.14.7) gave the same nine PASS lines. After the replay only the title-page DOI line
-of manuscript.tex, the rebuilt PDF and the release records changed; `code/`, `results/` and `ENVIRONMENT.txt` are
+of manuscript.tex, a one-line typo fix in the Section 1 example (the product form of C_{4,3} now reads
+[5]_q[8]_q/[2]_q; the coefficient list, code and outputs were already correct), the rebuilt PDF and the release records
+changed; `code/`, `results/` and `ENVIRONMENT.txt` are
 byte-identical to the replayed candidate.
 
 Comparison rule (that of `code/replay.py`, also used by CI): text outputs equal after stripping surrounding whitespace;

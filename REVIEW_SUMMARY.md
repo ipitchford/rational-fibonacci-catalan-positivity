@@ -27,6 +27,9 @@ independent reproduction or formal verification. No human referee has assessed t
    wording and rounding items were applied.
 4. **Clean replays** of all nine certificate runs from fresh copies under `python -I -B -O`, with two negative
    controls, by the lead and again by the publisher (see [REPLAY_RECEIPT.md](REPLAY_RECEIPT.md)).
+5. **Post-freeze typo fix** (25 November 2026). The publisher found that the Section 1 example printed the product
+   form of C_{4,3} as [8]_q[13]_q/[2]_q; by definition (1.1) it is [5]_q[8]_q/[2]_q, which equals the printed
+   coefficient list. The coordinator verified the correction independently; no claim, code or output changed.
 
 No Astra/Codex second-model review took place: that route reported the model as unsupported for the account.
 
