@@ -1,0 +1,7 @@
+G2 9 0 all passed
+F4 105 6 all passed
+E6 441 38 all passed
+E7 1397 60 all passed
+E8 3825 467 all passed
+H3 35 0 all passed
+H4 105 12 all passed

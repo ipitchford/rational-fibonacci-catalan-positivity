@@ -1,0 +1,64 @@
+# SPDX-License-Identifier: MIT
+name: Replay
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+jobs:
+  quick:
+    name: Manifest; eight certificate runs under python -O compared with the recorded outputs; negative controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check MANIFEST.sha256
+        run: sha256sum -c MANIFEST.sha256
+      - name: Run the certificate programs in a copy of the package (cwd = package root), width seven excepted
+        run: |
+          python3 -I -c 'import sys; print(sys.version)'
+          for d in runO neg1 neg2; do mkdir -p "$RUNNER_TEMP/$d/out"; cp -R code results "$RUNNER_TEMP/$d/"; done
+          cd "$RUNNER_TEMP/runO"
+          python3 -I -B -O code/verify_type_a.py > out/verify_type_a.json
+          python3 -I -B -O code/verify_exceptional.py > out/verify_exceptional.txt
+          python3 -I -B -O code/verify_pairs.py > out/verify_pairs.txt
+          python3 -I -B -O code/verify_classical.py > out/verify_classical.txt
+          python3 -I -B -O code/claims.py > out/claims.json
+          python3 -I -B -O code/width_cert.py 4 30 > out/width4.json
+          python3 -I -B -O code/width_cert.py 5 50 > out/width5.json
+          python3 -I -B -O code/width_cert.py 6 60 > out/width6.json
+      - name: Compare with the recorded outputs (rule of code/replay.py; only the timing field "seconds" is ignored)
+        run: python3 -I .github/ci/compare_outputs.py "$RUNNER_TEMP/runO/out" results verify_type_a.json verify_exceptional.txt verify_pairs.txt verify_classical.txt claims.json width4.json width5.json width6.json
+      - name: Negative controls under -O
+        run: |
+          cd "$RUNNER_TEMP/neg1"
+          sed -i 's/("H3", (2, 6, 10), 10, (1, 5, 9))/("H3", (2, 6, 10), 10, (1, 9))/' code/verify_exceptional.py
+          grep -q '("H3", (2, 6, 10), 10, (1, 9))' code/verify_exceptional.py
+          if python3 -I -B -O code/verify_exceptional.py > out.txt 2>&1; then echo "corrupted H3 residues not detected"; exit 1; fi
+          grep -q 'CertificateError' out.txt
+          cd "$RUNNER_TEMP/neg2"
+          sed -i "s/check(min(poly) >= 0, 'verify_type_a.py line 68')/check(min(poly) >= 1, 'verify_type_a.py line 68')/" code/verify_type_a.py
+          grep -q 'check(min(poly) >= 1' code/verify_type_a.py
+          if python3 -I -B -O code/verify_type_a.py > out.txt 2>&1; then echo "corrupted positivity check not detected"; exit 1; fi
+          grep -q 'CertificateError' out.txt
+          echo "negative controls detected"
+      - name: Working tree unchanged
+        run: test -z "$(git status --porcelain)"
+  full:
+    name: Full replay including width seven (code/replay.py; slow, non-blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: code/replay.py under -O in a copy of the package
+        run: |
+          mkdir -p "$RUNNER_TEMP/full"; cp -R code results "$RUNNER_TEMP/full/"
+          cd "$RUNNER_TEMP/full" && python3 -I -B -O code/replay.py

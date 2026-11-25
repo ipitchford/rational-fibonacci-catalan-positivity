@@ -1,0 +1,403 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,booktabs,xcolor}
+\usepackage[margin=25mm]{geometry}
+\definecolor{linkink}{HTML}{235A65}
+\usepackage[colorlinks=true,linkcolor=linkink,urlcolor=linkink,citecolor=linkink]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}\newtheorem{example}[theorem]{Example}
+\numberwithin{equation}{section}
+\title{Rational Fibonacci--Catalan polynomials:\\ positivity, a Coxeter classification\\ and $q$-Fibonomial unimodality up to width seven}
+\author{Anonymous\\[3pt]{\small DOI \href{https://doi.org/10.5281/zenodo.24541015}{10.5281/zenodo.24541015}}}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Replacing each integer $j$ in a factorial ratio by the $q$-integer $[F_j]_q=1+q+\cdots+q^{F_j-1}$ of the Fibonacci number $F_j$ gives the $q$-Fibonomial coefficients and, after division by one further $q$-integer, the rational $q$-Fibonacci--Catalan functions $C_{m,n}(q)$. Following S.~X.~Li, Bergeron, Ceballos and K\"ustner showed that $C_{m,n}$ is a polynomial when $\gcd(m,n)\le2$, observed that its coefficients are nonnegative, and asked what they count. We prove the nonnegativity for every such pair. More precisely, for every pair $(m,n)$ the reduced denominator of $C_{m,n}$ is exactly $[F_{\gcd(m,n)}]_q$, and the reduced numerator is the Hilbert series of an Artinian weighted complete intersection. The general criterion for such complete intersections is known; the new ingredient is a uniform semigroup count that covers the pairs with comparable indices, where existing sufficient conditions do not apply. The same denominator and complete-intersection structure hold for Lucas sequences with positive coprime integer parameters. For the analogous product attached to an irreducible finite reflection group we determine exactly which shifts give a polynomial, and show that every such polynomial has nonnegative coefficients; in particular every Fibonacci Fuss--Coxeter--Catalan quotient is positive. Finally we prove the $q$-Fibonomial unimodality conjecture of Bergeron, Ceballos and K\"ustner whenever the smaller index is at most seven, on a set of index pairs of natural density about $0.408$, and, with strict increase to the centre, for each fixed smaller index $n\ge4$ once the larger index is large enough. The widths five, six and seven rest on exact computer certificates. A combinatorial model on the original tilings, and the unrestricted unimodality conjecture, remain open.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+This section states the problem, explains why it is of interest, summarises what was known, lists the new results and gives a roadmap.
+
+\paragraph{The objects.}
+For a positive integer $u$ write $[u]_q=1+q+\cdots+q^{u-1}=(1-q^u)/(1-q)$. Let $F_0=0$, $F_1=1$ and $F_{k+2}=F_{k+1}+F_k$ be the Fibonacci numbers. For positive integers $m,n$ put
+\begin{equation}\label{eq:defs}
+ P_{m,n}(q)=\prod_{j=1}^n\frac{[F_{m+j}]_q}{[F_j]_q},\qquad C_{m,n}(q)=\frac{P_{m,n}(q)}{[F_{m+n}]_q}.
+\end{equation}
+Both are symmetric in $m$ and $n$. If every $F_j$ is replaced by $j$ and $q$ is set to $1$, then $P_{m,n}$ becomes the binomial coefficient $\binom{m+n}{n}$ and $C_{m,n}$ becomes the rational Catalan number $\frac1{m+n}\binom{m+n}{n}$, which counts lattice paths in an $m\times n$ rectangle staying above the diagonal when $m$ and $n$ are coprime. The polynomial $P_{m,n}$ is the $q$-Fibonomial coefficient, and $C_{m,n}$ is the rational $q$-Fibonacci--Catalan function of Bergeron, Ceballos and K\"ustner \cite{bck}. For example, for $(m,n)=(4,3)$ one finds
+\[
+ C_{4,3}(q)=\frac{[8]_q[13]_q}{[2]_q}=1+q+2q^2+2q^3+3q^4+2q^5+3q^6+2q^7+2q^8+q^9+q^{10}.
+\]
+
+\paragraph{Why the question matters.}
+Rational Catalan numbers and their $q$-analogues are a meeting point of lattice-path enumeration, Coxeter combinatorics and representation theory; Bergeron, Ceballos and K\"ustner list many of these connections \cite[\S4]{bck}. When a $q$-analogue of an integer has nonnegative coefficients, one expects a graded set or a graded vector space behind it. Bergeron, Ceballos and K\"ustner proved that $P_{m,n}$ has nonnegative coefficients by a weighted path-domino tiling model \cite[Thm.~2.4]{bck}. For $C_{m,n}$ they observed nonnegative coefficients for $m,n\le15$, wrote that they had neither a proof nor a combinatorial model, and asked for a combinatorial interpretation \cite[Open Problem~4.3]{bck}; the ordinary and Fuss--Catalan specialisations are their Open Problem~5.4. They also conjectured that $P_{m,n}$ is unimodal \cite[Conj.~2.5]{bck}, and reported Coxeter-group analogues that appeared to be positive \cite[Remark~4.5]{bck}.
+
+\paragraph{What was known.}
+Polynomiality of $C_{m,n}$ for $\gcd(m,n)\in\{1,2\}$ is due to S.~X.~Li \cite[Prop.~4.2]{bck}. F.~Aliniaeifard observed that the unimodality conjecture implies nonnegativity of $C_{m,n}$ \cite[Remark~4.4]{bck}; Connelly, Ito, Martinez, Shevchenko and Yang gave a written proof of this implication \cite[Prop.~5.6]{connelly}, proved unimodality of $P_{m,n}$ for $n\le3$ \cite[Thm.~1.2]{connelly}, and restated the counting problems \cite[Problems~5.7--5.8]{connelly}. Independently of Fibonacci numbers, a quotient $\prod_i(1-q^{e_i})/\prod_j(1-q^{w_j})$ with equally many factors has nonnegative coefficients whenever it is the Hilbert series of a weighted complete intersection, and Gatzweiler, Levic\'an-Santib\'a\~nez and Yoshida \cite[Prop.~3.3]{gly} characterised the degree lists for which such a complete intersection exists by a family of semigroup conditions (see also Billey and Swanson \cite[\S6.3]{billey}). They also gave a practical sufficient condition for widely separated degrees \cite[Thm.~3.9]{gly}. Applied to $C_{m,n}$ with $\gcd(m,n)\le2$, that condition yields nonnegativity when $F_{m+1}>2F_n\lfloor F_{n-1}/2\rfloor-1$; for $n\ge7$ this means exactly $m\ge 2n-3$ (Remark~\ref{rem:gly}). Pairs with comparable indices, $n\le m\le 2n-4$ for $n\ge7$ (slightly fewer for $n\le6$), which make up about half of all pairs with $m\ge n$, were not covered. Bennett, Carrillo, Machacek and Sagan \cite{bcms} and Sagan and Tirrell \cite{st} studied Lucas analogues, in which the integers are replaced by polynomials in two parameters; those are different objects from the $q$-integers of Fibonacci numbers used here (Remark~\ref{rem:lucas-poly}).
+
+\paragraph{What is new.}
+\begin{enumerate}
+\item \emph{Positivity and the exact denominator} (Theorem~\ref{thm:typeA}). For every pair $(m,n)$ with $g=\gcd(m,n)$, the reduced denominator of $C_{m,n}$ is $[F_g]_q$, and $[F_g]_qC_{m,n}$ is the Hilbert series of an Artinian weighted complete intersection. In particular $C_{m,n}$ has nonnegative coefficients whenever $g\le2$, which proves the nonnegativity observed in \cite{bck}. The key step is a uniform count showing that the semigroup criterion holds near the diagonal (Lemma~\ref{lem:conductor} and the proof of Theorem~\ref{thm:typeA}).
+\item \emph{Lucas sequences} (Corollary~\ref{cor:lucas}). With $F_j$ replaced by $U_j$, where $U_{k+2}=sU_{k+1}+tU_k$ with coprime positive integers $s,t$, the reduced denominator is $[U_g]_q$ and the reduced numerator is again a complete-intersection Hilbert series; so the quotient has nonnegative coefficients when $g=1$, or when $g=2$ and $s=1$.
+\item \emph{Coxeter groups} (Theorem~\ref{thm:cox}). For the Fibonacci quotient attached to an irreducible finite reflection group and a shift $a$, being a polynomial is equivalent to having nonnegative integer coefficients, and we list exactly when this happens. Every Fuss shift $a\equiv\pm1$ modulo the Coxeter number is admissible (Corollary~\ref{cor:fuss}). The list shows that the coprimality condition suggested in \cite[Remark~4.5]{bck} is too strong in types $B$ and $D$.
+\item \emph{Unimodality.} $P_{m,n}$ is unimodal on an explicit set of pairs of density about $0.408$ (Theorem~\ref{thm:density}); for each fixed $n\ge4$ its coefficients increase strictly to the centre once $m$ is large (Theorem~\ref{thm:fixed}); and $P_{m,n}$ is unimodal whenever $\min(m,n)\le7$, with strict increase to the centre when $4\le\min(m,n)\le7$ and $(m,n)\ne(4,4)$ (Theorems~\ref{thm:width4} and~\ref{thm:width57}). Width four has a short analytic proof; widths five to seven rest on exact certificates.
+\end{enumerate}
+The complete intersection supplies a graded algebra whose dimensions are the coefficients, and hence a basis of standard monomials. We do not claim a combinatorial interpretation in the sense intended in \cite{bck}, that is, a statistic on their path-domino tilings; Open Problems~4.3 and~5.4 of \cite{bck} remain open in that sense (Remark~\ref{rem:counting}). The unrestricted unimodality conjecture also remains open.
+
+\paragraph{Roadmap.}
+Section~\ref{sec:prelim} collects the cyclotomic, Fibonacci and semigroup tools, including the complete-intersection criterion. Part~I concerns positivity: Section~\ref{sec:typeA} proves the main theorem for $C_{m,n}$, Section~\ref{sec:lucas} transfers it to Lucas sequences, and Section~\ref{sec:coxeter} treats finite reflection groups. Part~II concerns unimodality of $P_{m,n}$: Section~\ref{sec:density} gives the density result, Section~\ref{sec:fixed} the fixed-width limit theorem, Section~\ref{sec:width4} the analytic proof in width four, and Section~\ref{sec:cert} the exact certificates in widths five to seven. Section~\ref{sec:open} lists open problems, and Section~\ref{sec:repro} describes the computations.
+
+\section{Preliminaries}\label{sec:prelim}
+This section fixes notation and records three tools: cyclotomic bookkeeping for quotients of $q$-integers, divisibility properties of Fibonacci numbers, and the criterion for weighted complete intersections.
+
+\paragraph{Cyclotomic bookkeeping.}
+Let $\Phi_e(q)$ denote the $e$th cyclotomic polynomial. Then $[u]_q=\prod_{e\mid u,\,e>1}\Phi_e(q)$. For multisets $E=\{e_1,\ldots,e_h\}$ and $W=\{w_1,\ldots,w_h\}$ of positive integers, the rational function
+\begin{equation}\label{eq:quotient}
+ R_{E,W}(q)=\prod_{i=1}^h\frac{1-q^{e_i}}{1-q^{w_i}}=\prod_{i=1}^h\frac{[e_i]_q}{[w_i]_q}
+\end{equation}
+is a polynomial exactly when, for every $e\ge2$, at least as many $e_i$ as $w_i$ are divisible by $e$. We call this the \emph{cyclotomic test}. When $R_{E,W}$ is a polynomial it is symmetric (palindromic) of degree $\sum e_i-\sum w_i$, and its value at $q=1$ is $\prod e_i/\prod w_i$.
+
+\paragraph{Fibonacci divisibility.}
+We use the addition formula $F_{u+v}=F_uF_{v+1}+F_{u-1}F_v$ $(u\ge1,\ v\ge0)$ and strong divisibility $\gcd(F_i,F_j)=F_{\gcd(i,j)}$. For an integer $e\ge2$ let $z(e)$ be the least positive index with $e\mid F_{z(e)}$. Strong divisibility shows that $e\mid F_i$ exactly when $z(e)\mid i$: indeed $e\mid F_i$ implies $e\mid F_{\gcd(z(e),i)}$, and minimality forces $\gcd(z(e),i)=z(e)$. Since $F_1=F_2=1$, always $z(e)\ge3$. For $k\ge3$ one has $z(F_k)=k$, because the sequence increases strictly from index two; hence $F_k\mid F_i$ exactly when $k\mid i$.
+
+\paragraph{Semigroups and complete intersections.}
+For a finite multiset $B$ of positive integers, $\langle B\rangle$ is the additive semigroup it generates, including $0$. Let $K$ be a field of characteristic zero (for definiteness $K=\mathbb C$) and let $x_1,\ldots,x_h$ be variables with positive degrees $w_1,\ldots,w_h$. A sequence $f_1,\ldots,f_h$ of weighted-homogeneous polynomials of degrees $e_1,\ldots,e_h$ is regular if and only if the quotient ring $A=K[x_1,\ldots,x_h]/(f_1,\ldots,f_h)$ is finite-dimensional \cite[Lemma~52]{billey}. In that case $A$ is called an Artinian weighted complete intersection, and its Hilbert series $\sum_k\dim_K(A_k)q^k$ equals $R_{E,W}(q)$. In particular $R_{E,W}$ then has nonnegative integer coefficients.
+
+\begin{lemma}[{\cite[Prop.~3.3]{gly}}]\label{lem:ci}
+Regular sequences of degrees $e_1,\ldots,e_h$ in variables of degrees $w_1,\ldots,w_h$ exist if and only if, for every set $J$ of variable indices, at least $|J|$ indices $i$ satisfy $e_i\in\langle w_j:j\in J\rangle$. When the condition holds, general forms of these degrees are a regular sequence.
+\end{lemma}
+Gatzweiler, Levic\'an-Santib\'a\~nez and Yoshida derive this from work of Pizzato, Sano and Tasin \cite{gly}; Bender and Spaenlehauer \cite[Thm.~3.8]{bs} give the analogous criterion for shorter sequences. The idea is that a form whose degree lies in $\langle w_j:j\in J\rangle$ contains a monomial in the variables indexed by $J$ alone, so general such forms cut down the torus orbit of points with support exactly $J$. We call the condition of Lemma~\ref{lem:ci} the \emph{support test}. The next lemma is the Fibonacci input that makes the support test checkable.
+
+\begin{lemma}\label{lem:conductor}
+Let $J$ be a nonempty finite set of positive integers with minimum $a$, maximum $b$ and greatest common divisor $d$. If $s\ge a+b-d+1$ and $F_d\mid F_s$, then $F_s\in\langle F_j:j\in J\rangle$.
+\end{lemma}
+\begin{proof}
+By strong divisibility $\gcd(F_j:j\in J)=F_d$. Divide every generator by $F_d$ and let $u=F_a/F_d$ be the smallest scaled generator. The scaled generators have greatest common divisor one, so their residues generate $\mathbb Z/u\mathbb Z$ as a semigroup. A shortest sequence of generator steps from $0$ to a given residue visits no residue twice, so it uses at most $u-1$ steps, each of size at most $F_b/F_d$. Adding copies of $u$ reaches every larger integer in the same residue class. Hence every multiple of $F_d$ that is at least $(u-1)F_b$ lies in the semigroup. By the addition formula $F_a=F_dF_{a-d+1}+F_{d-1}F_{a-d}\le F_dF_{a-d+2}$, so $uF_b\le F_bF_{a-d+2}\le F_{a+b-d+1}\le F_s$. (When $a=d$ the first inequality reads $F_d\le F_dF_2$.)
+\end{proof}
+
+\part*{Part I. Positivity}
+\section{Rational Fibonacci--Catalan polynomials}\label{sec:typeA}
+This section proves the main positivity theorem, compares it with the separated-degree criterion of \cite{gly}, and gives an explicit example of the complete intersection.
+
+\begin{theorem}\label{thm:typeA}
+Let $m,n$ be positive integers and $g=\gcd(m,n)$. The reduced denominator of $C_{m,n}$, normalised to have constant term one, is $[F_g]_q$. The reduced numerator
+\begin{equation}\label{eq:corrected}
+ [F_g]_q\,C_{m,n}(q)=\frac{\prod_{i=m+1}^{m+n-1}(1-q^{F_i})}{\prod_{1\le j\le n,\ j\ne g}(1-q^{F_j})}
+\end{equation}
+is the Hilbert series of an Artinian weighted complete intersection, with variables of degrees $F_j$ $(1\le j\le n,\ j\ne g)$ and relations of degrees $F_i$ $(m+1\le i\le m+n-1)$. In particular $C_{m,n}$ has nonnegative integer coefficients whenever $g\le2$, and is not a polynomial when $g\ge3$.
+\end{theorem}
+\begin{proof}
+Formula \eqref{eq:corrected} follows from \eqref{eq:defs} by cancelling $1-q^{F_{m+n}}$ and $1-q^{F_g}$. By symmetry assume $m\ge n$. Numerator and denominator each have $n-1$ factors. We verify the support test of Lemma~\ref{lem:ci}. Let $J\subseteq\{1,\ldots,n\}\setminus\{g\}$ be nonempty, with $t=|J|$, minimum $a$, maximum $b$ and greatest common divisor $d$. Since the elements of $J$ are distinct multiples of $d$, we have $a\le b-(t-1)d$.
+
+\emph{Choice of $t$ target indices.} If $d\le2$, take the $t$ largest indices of the interval $I=[m+1,m+n-1]$. If $d\ge3$, take the $t$ largest multiples of $d$ in $I$. These exist: the number of multiples of $d$ in $I$ is $\lfloor (m+n-1)/d\rfloor-\lfloor m/d\rfloor$, which is at least $\lfloor n/d\rfloor$ unless $d$ divides both $m$ and $n$, in which case it equals $n/d-1$. In the first case $t\le\lfloor n/d\rfloor$ because $J$ consists of multiples of $d$ in $[1,n]$. In the second case $d\mid g$, so $g$ is one of the $n/d$ multiples of $d$ in $[1,n]$, and since $g\notin J$ we have $t\le n/d-1$. In all cases every chosen index $s$ satisfies $s\ge m+n-td$, because any $td$ consecutive integers contain $t$ multiples of $d$; and $F_d\mid F_s$, trivially when $d\le2$.
+
+\emph{Size of the targets.} If $m\ge n+1$, then $s\ge 2n+1-td\ge 2b-td+1\ge a+b-d+1$. If $m=n$, then $g=n$ was removed, so $b\le n-1$ and $s\ge 2n-td\ge a+b-d+1$. Lemma~\ref{lem:conductor} now shows $F_s\in\langle F_j:j\in J\rangle$ for $t$ distinct target indices $s$. The support test holds, and Lemma~\ref{lem:ci} gives the complete intersection.
+
+\emph{Exactness of the denominator.} Let $e\ge2$ divide $F_g$ and put $z=z(e)$. Then $z\mid g$, so $z$ divides both $m$ and $n$. By the description of the indices $i$ with $e\mid F_i$, the multiplicity of $\Phi_e$ in $C_{m,n}=\prod_{i=m+1}^{m+n-1}[F_i]_q/\prod_{j=1}^n[F_j]_q$ is
+\[
+ \Big\lfloor\frac{m+n-1}{z}\Big\rfloor-\Big\lfloor\frac m z\Big\rfloor-\Big\lfloor\frac n z\Big\rfloor=-1.
+\]
+So every cyclotomic factor of $[F_g]_q$ survives exactly once in the denominator, and \eqref{eq:corrected} shows that nothing else does. Finally $F_g=1$ exactly when $g\le2$.
+\end{proof}
+
+\begin{remark}[Comparison with separated degrees]\label{rem:gly}
+For $g\le2$ the corrected denominator in \eqref{eq:corrected} has smallest degree $1$ and two largest degrees $F_n\ge F_{n-1}$ (for $n\ge3$), and the smallest numerator degree is $F_{m+1}$. Since $C_{m,n}$ is then a polynomial by Li's theorem, the sufficient condition of \cite[Thm.~3.9]{gly} applies when $F_{m+1}>2F_n\lfloor F_{n-1}/2\rfloor-1$. The least such $m\ge n$ is $3,5,6,8$ for $n=3,4,5,6$ and exactly $2n-3$ for every $n\ge7$. Indeed, $m=2n-3$ qualifies because $F_{2n-2}=F_nF_{n-1}+F_{n-1}F_{n-2}>F_nF_{n-1}\ge2F_n\lfloor F_{n-1}/2\rfloor$; and $m=2n-4$ does not, because $2F_n\lfloor F_{n-1}/2\rfloor-1-F_{2n-3}\ge F_n(F_{n-1}-1)-1-F_{n-1}^2-F_{n-2}^2=F_{n-2}F_{n-3}-F_n-1\ge0$ for $n\ge7$ (the program \texttt{claims.py} confirms the values for $3\le n\le40$). Theorem~\ref{thm:typeA} therefore adds the comparable range below this threshold ($n\le m\le 2n-4$ for $n\ge7$), which contains about half of all pairs with $m\ge n$, and the exact reduced denominator for every $g$. Gatzweiler, Levic\'an-Santib\'a\~nez and Yoshida anticipated that the equivalence criterion could settle further cases using special properties of the degree lists \cite[Remark~3.12]{gly}; Lemma~\ref{lem:conductor} supplies such a property for Fibonacci numbers.
+\end{remark}
+
+\begin{example}[An explicit complete intersection]\label{ex:104}
+For $(m,n)=(10,4)$ we have $g=2$, variables of degrees $F_1,F_3,F_4=1,2,3$ and relations of degrees $F_{11},F_{12},F_{13}=89,144,233$. Of the three relation degrees, both $2$ and $3$ divide only $144$, so the relations cannot be chosen as pure powers of distinct variables. With variables $x,y,z$ of degrees $1,2,3$ take instead
+\[
+ \big(x^{89},\ y^{72}+z^{48},\ yz^{77}\big).
+\]
+Their only common zero is the origin. In lexicographic order with $x>y>z$, the only nontrivial S-pair produces $z^{125}$, and the initial ideal is $(x^{89},y^{72},yz^{77},z^{125})$. The standard monomials $x^iy^jz^k$ are those with $0\le i<89$ and either $0\le j<72,\ 0\le k<77$, or $j=0,\ 77\le k<125$. Weighting $x^iy^jz^k$ by $q^{i+2j+3k}$ gives the manifestly positive expression
+\[
+ C_{10,4}(q)\,[F_2]_q=C_{10,4}(q)=[89]_q\Big([72]_{q^2}[77]_{q^3}+q^{231}[48]_{q^3}\Big),
+\]
+with $497688$ monomials in total. The verification program confirms this identity coefficient by coefficient.
+\end{example}
+
+\begin{remark}[What the complete intersection does and does not give]\label{rem:counting}
+Theorem~\ref{thm:typeA} says that the coefficient of $q^k$ in $[F_g]_qC_{m,n}$ is the dimension of the degree-$k$ part of a graded algebra, and so counts standard monomials for any monomial order once a regular sequence is fixed. For general (generic) relations this count is the number of columns that do not raise the rank in the matrix whose rows are the coefficient vectors of $x^uf_i$ in degree $k$, a description that can be phrased as a signed count of matchings in a coloured bipartite graph. This description is valid for every complete-intersection Hilbert series and is not manifestly positive at the level of objects, so it does not answer \cite[Open Problem~4.3]{bck} or \cite[Problem~5.7]{connelly} in the intended sense. An explicit family of regular sequences with explicit Gr\"obner bases, generalising Example~\ref{ex:104}, would give a manifestly positive model; we leave this open (Section~\ref{sec:open}).
+\end{remark}
+
+\section{Lucas sequences with positive parameters}\label{sec:lucas}
+This section shows that the argument of Section~\ref{sec:typeA} uses only strong divisibility and the addition formula, and therefore applies to Lucas sequences.
+
+\begin{corollary}\label{cor:lucas}
+Fix coprime positive integers $s,t$ and let $U_0=0$, $U_1=1$, $U_{k+2}=sU_{k+1}+tU_k$. Replace $[F_j]_q$ by $[U_j]_q$ in \eqref{eq:defs}. Then the reduced denominator of the resulting quotient $C^U_{m,n}$ is $[U_{\gcd(m,n)}]_q$, and the reduced numerator is the Hilbert series of an Artinian weighted complete intersection.
+\end{corollary}
+\begin{proof}
+Induction gives $U_{i+j}=U_iU_{j+1}+tU_{i-1}U_j$ for $i\ge1$, $j\ge0$. Since $U_i\equiv s^{i-1}\pmod t$, $\gcd(U_i,t)=1$; the recurrence then gives $\gcd(U_i,U_{i-1})=\gcd(tU_{i-2},U_{i-1})=\gcd(U_{i-2},U_{i-1})=1$. Hence $\gcd(U_i,U_{i+j})=\gcd(U_i,tU_{i-1}U_j)=\gcd(U_i,U_j)$, and the Euclidean algorithm on indices gives strong divisibility $\gcd(U_i,U_j)=U_{\gcd(i,j)}$. The sequence is nondecreasing because $s\ge1$, and the addition formula gives $U_a\le U_dU_{a-d+2}$ (using $U_{d-1}\le U_d$ and $s\ge1$) and $U_bU_{a-d+2}\le U_{a+b-d+1}$. Thus Lemma~\ref{lem:conductor} holds verbatim for $U$. In the proof of Theorem~\ref{thm:typeA}, the case distinction must now be $d=1$ versus $d\ge2$, because $U_2=s$ may exceed one; for $d\ge2$ the count of multiples of $d$ and its repair by the removed index $g$ are unchanged. The cyclotomic computation of the denominator uses only strong divisibility.
+\end{proof}
+
+\begin{example}
+For $(m,n)=(4,3)$, so that $g=1$, the corrected numerators have the following data; the last column is the value at $q=1$, the product of the relation degrees divided by the product of the weights.
+\[
+\begin{array}{c|c|c|c|r}
+(s,t)&\text{weights}&\text{relation degrees}&\text{degree}&\text{value at }1\\\hline
+(1,2)&1,3&11,21&28&77\\
+(2,1)&2,5&29,70&92&203\\
+(2,3)&2,7&61,182&234&793
+\end{array}
+\]
+For the Pell case $(s,t)=(2,1)$ one may take the relations $x^2y^5$ and $x^{35}+y^{14}$ in variables of degrees $2,5$; their only common zero is the origin. When $(s,t)=(1,2)$ and $(m,n)=(3,3)$, the correction is $[U_3]_q=[3]_q$ and the corrected numerator is $[5]_q[11]_q$.
+\end{example}
+
+\begin{remark}\label{rem:lucas-poly}
+The Lucas analogues of \cite{bcms,st} replace each integer $j$ by a polynomial $\{j\}$ in two parameters with $\{j+2\}=s\{j+1\}+t\{j\}$. The sequence $[F_j]_q$ is not of this form: its terms at indices $2$ and $3$ would force $s=1$ and $t=q$, and then index $4$ would give $1+2q$ instead of $[3]_q=1+q+q^2$. Corollary~\ref{cor:lucas} instead applies $q$-integers to fixed integer Lucas sequences.
+\end{remark}
+
+\section{Finite reflection groups}\label{sec:coxeter}
+This section defines the Fibonacci quotient attached to a finite reflection group, states the classification of shifts that give polynomials, and proves it type by type.
+
+Let $W$ be an irreducible finite Coxeter group with degrees $D=\{d_1,\ldots,d_r\}$ (counted with multiplicity; $d_i=e_i+1$ for the exponents $e_i$) and Coxeter number $h=\max D$. The degrees are listed, for example, in Armstrong's memoir \cite[Fig.~2.7]{armstrong}: $2,3,\ldots,r+1$ for $A_r$; $2,4,\ldots,2r$ for $B_r$; $2,4,\ldots,2r-2,r$ for $D_r$; $2,k$ for $I_2(k)$; and the lists in Table~\ref{tab:exc} for the exceptional types. For a positive integer $a$ put
+\begin{equation}\label{eq:HDa}
+ H_{D,a}(q)=\prod_{d\in D}\frac{[F_{a+d-1}]_q}{[F_d]_q}.
+\end{equation}
+For crystallographic $W$ this is the Fibonacci analogue of the rational Coxeter--Catalan number $\prod_i(a+e_i)/(e_i+1)$ considered in \cite[Remark~4.5]{bck}. For non-crystallographic $W$ and general $a$, the rational Coxeter--Catalan number is usually defined with a Galois permutation of the exponents; \eqref{eq:HDa} always uses the unpermuted list, and we call it the \emph{untwisted} quotient. For $a\equiv\pm1\pmod h$ the permutation is trivial or reverses the exponents, so the two agree.
+
+\begin{theorem}\label{thm:cox}
+For every irreducible finite Coxeter group $W$ and every positive integer $a$, the quotient $H_{D,a}$ lies in $\mathbb Z[q]$ if and only if it lies in $\mathbb Z_{\ge0}[q]$. This happens exactly in the following cases.
+\[
+\begin{array}{ll}
+\toprule
+ W & \text{admissible shifts }a\ge1\\
+\midrule
+ A_r\ (r\ge1) & \gcd(a,r+1)\le2\\
+ B_r\ (r\ge2),\ D_r\ (r\ge4)& a\text{ odd}\\
+ I_2(k)\ (k\ge3) & a\equiv\pm1\pmod k\\
+ G_2,\ F_4,\ E_6,\ E_7 & \gcd(a,6)=1\\
+ E_8 & \gcd(a,30)=1\\
+ H_3 & a\equiv1,5,9\pmod {10}\\
+ H_4 & a\equiv1,11,19,29\pmod {30}\\
+\bottomrule
+\end{array}
+\]
+\end{theorem}
+Where types coincide in small rank ($A_2=I_2(3)$, $B_2=I_2(4)$, $G_2=I_2(6)$), the descriptions agree. For the crystallographic exceptional types the condition is $\gcd(a,h)=1$. In types $B$ and $D$ it is weaker: for example $W=B_3$ and $a=3$ give $H_{D,a}=[F_8]_q=[21]_q$, although $3$ divides $h=6$. This corrects the remark in \cite[Remark~4.5]{bck} that types other than $A$ need $\gcd(a,h)=1$. (For reducible groups, poles of one factor can be cancelled by another, and we do not treat them.)
+
+\begin{corollary}[Fuss shifts]\label{cor:fuss}
+For every irreducible finite Coxeter group and every integer $k\ge0$, the quotients $H_{D,kh+1}$ and $H_{D,kh-1}$ (the latter for $k\ge1$) are polynomials with nonnegative coefficients. In particular every Fibonacci analogue of a Fuss--Coxeter--Catalan number $\prod_i(kh+e_i+1)/d_i$ is positive.
+\end{corollary}
+\begin{proof}
+Every row of the table admits $a\equiv\pm1\pmod h$: in type $A_r$ one has $h=r+1$ and $\gcd(kh\pm1,h)=1$; in types $B_r$ and $D_r$ the Coxeter numbers $2r$ and $2r-2$ are even, so $kh\pm1$ is odd; in type $I_2(k')$ one has $h=k'$; and the exceptional rows contain the residues $\pm1$. The program \texttt{claims.py} checks this row by row.
+\end{proof}
+
+The proof of Theorem~\ref{thm:cox} occupies the rest of this section. In every type, polynomiality is decided by the cyclotomic test of Section~\ref{sec:prelim}. By the description of $z(e)$, the multiplicity of $\Phi_e$ in $H_{D,a}$ depends only on $k=z(e)\ge3$ and equals
+\begin{equation}\label{eq:mult}
+ \nu_k(a)=\#\{d\in D:k\mid a+d-1\}-\#\{d\in D:k\mid d\}.
+\end{equation}
+So $H_{D,a}$ is a polynomial if and only if $\nu_k(a)\ge0$ for every $k\ge3$ that divides some $d\in D$.
+
+\paragraph{Type $A_r$.} The degrees $2,\ldots,r+1$ give $H_{D,a}=C_{a,r+1}$, so Theorem~\ref{thm:typeA} applies.
+
+\paragraph{Type $I_2(k)$.} Here $H_{D,a}=[F_{a+1}]_q[F_{a+k-1}]_q/[F_k]_q$. Since $k\ge3$, $\nu_k(a)\ge0$ requires $k\mid a+1$ or $k\mid a+k-1$, that is $a\equiv\pm1\pmod k$. Conversely, if $k\mid a+1$ then $F_k\mid F_{a+1}$ and $[F_{a+1}]_q/[F_k]_q=[F_{a+1}/F_k]_{q^{F_k}}$ has nonnegative coefficients; the other case is the same.
+
+\paragraph{Types $B_r$ and $D_r$.} Put $V_i=F_{2i}$ and, for $s,t\ge0$,
+\[
+ B(s,t)=\prod_{j=1}^{t}\frac{[V_{s+j}]_q}{[V_j]_q},
+\]
+so that $B(0,t)=B(s,0)=1$. For $s,t\ge1$ the addition formula gives $V_{s+t}=cV_s+dV_t$ with $c=F_{2t-1}$ and $d=F_{2s+1}$. Splitting $[cV_s+dV_t]_q=[c]_{q^{V_s}}[V_s]_q+q^{cV_s}[d]_{q^{V_t}}[V_t]_q$ and using $B(s,t)[V_s]_q/[V_{s+t}]_q=B(s-1,t)$ and $B(s,t)[V_t]_q/[V_{s+t}]_q=B(s,t-1)$ gives
+\[
+ B(s,t)=[c]_{q^{V_s}}\,B(s-1,t)+q^{cV_s}[d]_{q^{V_t}}\,B(s,t-1).
+\]
+By induction every $B(s,t)$ is a polynomial with nonnegative integer coefficients.
+
+In type $B_r$ the degrees are $2,4,\ldots,2r$, and for odd $a=2s+1$ the quotient is $B(s,r)$. In type $D_r$ the degrees are $2,4,\ldots,2r-2$ and $r$, and for $a=2s+1$ the quotient is $B(s,r-1)[F_{2s+r}]_q/[F_r]_q$. This is $1$ when $s=0$. For $s\ge1$ use $F_{2s+r}=F_rF_{2s+1}+F_{r-1}V_s$ and $B(s,r-1)[V_s]_q/[V_r]_q=B(s-1,r)$ to obtain
+\[
+ H_{D,a}=[F_{2s+1}]_{q^{F_r}}B(s,r-1)+q^{F_rF_{2s+1}}[F_{r-1}]_{q^{V_s}}\,[V_r/F_r]_{q^{F_r}}\,B(s-1,r),
+\]
+where $V_r/F_r=F_{2r}/F_r$ is an integer by strong divisibility. Both terms have nonnegative coefficients.
+
+For even $a$ consider $k=4$, so that $\Phi_{F_4}=\Phi_3$. In type $B_r$ $(r\ge2)$ the degree $4$ is present, while all indices $a+d-1$ are odd, so $\nu_4(a)<0$. In type $D_r$ with $r$ even the same holds. In type $D_r$ with $r$ odd we have $r\ge5$, so the degrees $4$ and $8$ are both present, while only the single index $a+r-1$ is even; again $\nu_4(a)<0$.
+
+\paragraph{Exceptional types.}
+\begin{table}[ht]\centering
+\[
+\begin{array}{c|l|c|l}
+ W&D&\text{modulus}&\text{admissible }a\text{ modulo the modulus}\\ \hline
+ G_2&2,6&6&1,5\\
+ F_4&2,6,8,12&6&1,5\\
+ E_6&2,5,6,8,9,12&6&1,5\\
+ E_7&2,6,8,10,12,14,18&6&1,5\\
+ E_8&2,8,12,14,18,20,24,30&30&1,7,11,13,17,19,23,29\\
+ H_3&2,6,10&10&1,5,9\\
+ H_4&2,12,20,30&30&1,11,19,29
+\end{array}
+\]
+\caption{Degrees and admissible shifts for the exceptional types.}\label{tab:exc}
+\end{table}
+For these seven types the proof is a finite computation in two steps.
+
+\emph{Step 1 (polynomiality).} Each $\nu_k(a)$ in \eqref{eq:mult} is periodic in $a$ with period dividing $L=\operatorname{lcm}(D)$. Evaluating $\nu_k(a)$ for every $k\ge3$ dividing some degree and every $1\le a\le L$ shows that $H_{D,a}$ is a polynomial exactly for the residues in Table~\ref{tab:exc}. Since every $e\ge2$ dividing some $F_d$ has $z(e)\mid d$, these $k$ include $z(e)$ for every relevant $e$, so no cyclotomic factor is missed.
+
+\emph{Step 2 (support test).} Let $J$ be a nonempty submultiset of $D$, let $b=\gcd(J)$ and $g=\gcd(F_j:j\in J)=F_b$, and let $u_j=F_j/g$ with smallest value $u$. For each residue class modulo $u$ let $A_\rho$ be the least element of $\langle u_j\rangle$ in that class (computed exactly by a shortest-path search). An integer $x$ lies in $\langle F_j:j\in J\rangle$ exactly when $g\mid x$ and $x/g\ge A_{(x/g)\bmod u}$; in particular every multiple of $g$ that is at least $C_J=g(\max_\rho A_\rho-u+1)$ lies in it. For admissible $a$, at least $|J|$ numerator indices $a+d-1$ are divisible by $b$: trivially if $b\le2$, and otherwise because $\nu_b(a)\ge0$. Hence the support test for $J$ can fail only if some numerator degree is below $C_J$, that is only for $F_{a+\min D-1}<C_J$. For those finitely many pairs $(J,a)$ the program tests every numerator degree for membership and confirms that at least $|J|$ belong. The numbers involved are as follows; $a_0$ is the largest, over $J$, of the least $a$ with $F_{a+\min D-1}\ge C_J$, and the last column counts the admissible pairs $(J,a)$ that needed an exact test.
+\[
+\begin{array}{c|r|r|r|r|r}
+ W&L&\#J&\max_J C_J&a_0&\#(J,a)\\\hline
+ G_2&6&3&0&1&0\\
+ F_4&24&15&846&15&11\\
+ E_6&360&63&2272&17&85\\
+ E_7&2520&127&971208&30&273\\
+ E_8&2520&255&4821625440&48&777\\
+ H_3&30&7&378&14&4\\
+ H_4&60&15&101502170&39&17
+\end{array}
+\]
+A second program checks Step 2 by a different algorithm. For each admissible $a$ below the cutoff $2h-2$ (see Remark~\ref{rem:shift}) and each $J$, it counts numerator degrees representable with at most two generators from $J$; for coprime $x,y>1$, $N\in\langle x,y\rangle$ exactly when the solution $0\le i<y$ of $xi\equiv N\pmod y$ satisfies $xi\le N$ (after dividing by the gcd in general). This sufficient test already succeeds in every case; the numbers of subset--shift pairs tested, in table order, are $9,105,441,1397,3825,35,105$. The two programs share only the degree lists. Neither expands the exceptional polynomials, whose degrees grow exponentially with $a$.
+
+\begin{remark}[The role of the shift]\label{rem:shift}
+For any multiset $D$ of integers at least two with maximum $h$, polynomiality of $H_{D,a}$ already implies the complete-intersection property when $a\ge2h-2$. Indeed, the cyclotomic count supplies at least $|J|$ numerator degrees divisible by $g=\gcd(F_j:j\in J)$, the argument of Lemma~\ref{lem:conductor} shows that every multiple of $g$ that is at least $F_h^2$ lies in $\langle F_j:j\in J\rangle$, and every numerator degree is at least $F_{2h-1}=F_h^2+F_{h-1}^2$. This sufficient condition is also a consequence of \cite[Thm.~3.9]{gly}. For small shifts a polynomial can have negative coefficients: $D=(4,6,9)$ and $a=4$ give $(1-q^{13})(1-q^{144})/\big((1-q^3)(1-q^8)\big)$, a polynomial by the cyclotomic test whose coefficient of $q^{13}$ is $-1$ because $13\notin\langle3,8\rangle$. Theorem~\ref{thm:cox} says that this does not happen for the degree lists of reflection groups.
+\end{remark}
+
+\part*{Part II. Unimodality of $q$-Fibonomial coefficients}
+\noindent A polynomial with coefficients $p_0,\ldots,p_D$ is \emph{unimodal} if $p_0\le\cdots\le p_M\ge\cdots\ge p_D$ for some $M$. Since $P_{m,n}$ is symmetric with nonnegative coefficients, it is unimodal exactly when its coefficients are nondecreasing up to the centre index $\lfloor D/2\rfloor$, $D=\deg P_{m,n}$. We write $p_k$ for the coefficient of $q^k$ in $P_{m,n}$, extended by $p_k=0$ for $k<0$, and $\Delta p_k=p_k-p_{k-1}$, $\Delta^2p_k=\Delta p_k-\Delta p_{k-1}$. Note that $\Delta^rp_k$ is the coefficient of $q^k$ in $(1-q)^rP_{m,n}(q)$. Bergeron, Ceballos and K\"ustner conjectured that every $P_{m,n}$ is unimodal \cite[Conj.~2.5]{bck}; Connelly et al.\ proved this for $\min(m,n)\le3$ \cite[Thm.~1.2]{connelly}.
+
+\section{A positive-density family}\label{sec:density}
+This section shows that the factorisation idea of Theorem~\ref{thm:typeA}, applied with two factors removed, proves unimodality on a set of density about $0.408$.
+
+\begin{theorem}\label{thm:density}
+The polynomial $P_{m,n}$ is unimodal whenever $\gcd(m,n)$, $\gcd(m-1,n)$ and $\gcd(m,n-1)$ are all at most $2$. These pairs have natural density
+\[
+ \frac{13}{16}\prod_{p\text{ odd prime}}\Big(1-\frac3{p^2}\Big)\approx0.40783
+\]
+in the squares $[1,N]^2$ as $N\to\infty$.
+\end{theorem}
+\begin{proof}
+By symmetry assume $m\ge n$. For $n=1$ the polynomial is $[F_{m+1}]_q$, and for $n=2$ it is $[F_{m+1}]_q[F_{m+2}]_q$, a product of two $q$-integers and hence symmetric and unimodal. Let $n\ge3$. The hypotheses exclude $m=n$ and $m=n+1$, so $m\ge n+2$. Removing the two unit weights $F_1=F_2=1$ and the two largest numerator factors gives
+\[
+ Q(q)=\frac{P_{m,n}(q)}{[F_{m+n}]_q[F_{m+n-1}]_q}=\frac{\prod_{i=m+1}^{m+n-2}(1-q^{F_i})}{\prod_{j=3}^{n}(1-q^{F_j})}.
+\]
+We verify the support test for $Q$ as in Theorem~\ref{thm:typeA}. Let $J\subseteq[3,n]$ be nonempty with $t,a,b,d$ as before. For $d\ge3$, write $m\equiv\mu$ and $n\equiv\nu$ modulo $d$ with $0\le\mu,\nu<d$; the hypotheses exclude $(\mu,\nu)\in\{(0,0),(1,0),(0,1)\}$, so $\mu+\nu\ge2$ and the interval $[m+1,m+n-2]$ contains $\lfloor(m+n-2)/d\rfloor-\lfloor m/d\rfloor\ge\lfloor n/d\rfloor\ge t$ multiples of $d$. Take the $t$ largest of them when $d\ge3$, and the $t$ largest indices of the interval when $d\le2$. Each chosen $s$ satisfies $F_d\mid F_s$ and $s\ge m+n-1-td\ge 2n+1-td\ge a+b-d+1$. By Lemmas~\ref{lem:conductor} and~\ref{lem:ci}, $Q$ is a polynomial with nonnegative coefficients; it is symmetric, of degree
+\[
+ \deg Q=\sum_{i=m+1}^{m+n-2}F_i-\sum_{j=3}^nF_j=F_{m+n}-F_{m+2}-F_{n+2}+3\le F_{m+n}.
+\]
+If $R$ is symmetric of degree $D'$ with nonnegative coefficients and $D'\le A$, then the coefficients of $[A]_qR$ up to its centre are partial sums of the coefficients of $R$, because the centre index of $[A]_qR$ is at most $A-1$; so $[A]_qR$ is symmetric and unimodal. Hence $[F_{m+n}]_qQ$ is symmetric and unimodal. Multiplying a symmetric unimodal polynomial by a $q$-integer preserves symmetric unimodality: write the polynomial as a nonnegative combination of $q$-integers shifted to share its centre, and note that the product of two $q$-integers is symmetric and unimodal. This proves the first assertion.
+
+For the density, $\gcd(x,y)\le2$ means that no odd prime divides both $x$ and $y$ and $4$ does not divide both. So modulo each odd prime $p$ the three residue pairs $(m,n)\equiv(0,0),(1,0),(0,1)$ are excluded, and modulo $4$ the same three residue pairs are excluded, leaving the proportions $1-3/p^2$ and $13/16$. The Chinese remainder theorem gives the product over finitely many primes. In $[1,N]^2$ the primes $Y<p\le N$ exclude at most $3\sum_{Y<p\le N}(N/p+1)^2$ further pairs. After division by $N^2$ this is at most $3\sum_{p>Y}p^{-2}+O(\log N/N)$, which tends to zero as $N\to\infty$ and then $Y\to\infty$.
+\end{proof}
+
+For $m,n\ge3$ the three gcd conditions are also necessary for $Q$ to be a polynomial: if one of the three gcds is divisible by some $d\ge3$, then the residues of $(m,n)$ modulo $d$ are $(0,0)$, $(1,0)$ or $(0,1)$ and the multiplicity of $\Phi_{F_d}$ in $Q$ is $\lfloor(m+n-2)/d\rfloor-\lfloor m/d\rfloor-\lfloor n/d\rfloor=-1$. The density therefore measures the exact reach of this factorisation; it says nothing about the remaining pairs.
+
+\section{Strict unimodality at each fixed width}\label{sec:fixed}
+This section fixes the smaller index $n$, lets $m\to\infty$, and identifies the limiting shape of the coefficients; strict curvature at the centre then gives strict unimodality. Stanley and Zanello \cite{sz} studied fixed-width asymptotics of ordinary Gaussian coefficients; here the factor lengths grow geometrically.
+
+\begin{theorem}\label{thm:fixed}
+For every $n\ge4$ there is $m_0(n)$ such that, for all $m\ge m_0(n)$, the coefficients of $P_{m,n}$ increase strictly up to the index $\lfloor\deg P_{m,n}/2\rfloor$.
+\end{theorem}
+\begin{proof}
+Put $T=F_{m+1}$ and $\phi=(1+\sqrt5)/2$. As $m\to\infty$, $F_{m+j}/T\to b_j=\phi^{j-1}$. For $r=1,2$ consider $K_r(q)=(1-q)^r/\prod_{j=1}^n(1-q^{F_j})$, so that $(1-q)^rP_{m,n}=K_r(q)\prod_{j=1}^n(1-q^{F_{m+j}})$. The function $K_r$ has a pole of order $n-r$ at $q=1$. At a primitive $e$th root of unity with $e\ge2$ the pole order is the number of $j\le n$ with $z(e)\mid j$, at most $\lfloor n/3\rfloor<n-r$. Partial fractions give, with $u=n-r-1\ge1$,
+\[
+ [q^k]K_r(q)=\frac{k^{u}}{u!\prod_jF_j}+O_n\big((1+k)^{u-1}\big)\qquad(k\ge0).
+\]
+Multiplying by the numerator factors produces $2^n$ signed translates. Uniformly for $x$ in compact intervals,
+\[
+ T^{-u}\,\Delta^rp_{\lfloor Tx\rfloor}\longrightarrow\frac1{u!\prod_jF_j}\sum_{S\subseteq[1,n]}(-1)^{|S|}\Big(x-\sum_{j\in S}b_j\Big)_+^{u}=\frac{f^{(r)}(x)}{\prod_jF_j},
+\]
+where $y_+=\max(y,0)$ and $f=\mathbf1_{[0,b_1]}*\cdots*\mathbf1_{[0,b_n]}$ is the convolution of the interval indicators (the identity is inclusion--exclusion for the volume of a box cut by a hyperplane). Uniformity across the moving knots uses $u\ge1$, which makes the positive-part powers continuous.
+
+Let $c=\frac12\sum_jb_j$ be the centre of $f$. We show that $f'>0$ on $(0,c)$ and $f''(c)<0$. Work with centred convolutions. Convolving intervals of lengths $b_1=1$ and $b_2=\phi$ gives a trapezoid that is constant on a central interval of length $\phi-1$ and strictly monotone outside it. Suppose $h$ is the centred convolution of the first few intervals, of total length $H$, positive on $(-H/2,H/2)$, constant on a central interval of length $P$ and strictly decreasing on $[P/2,H/2]$. Convolving with a centred interval of length $L$ gives derivative $h(y+L/2)-h(y-L/2)$ at $y$. Assume $P<L\le H$. For $0<y<(H+L)/2$ we have $|y-L/2|<H/2$, so $h(|y-L/2|)>0$, and $y+L/2>P/2$; since $|y-L/2|<y+L/2$, the derivative is negative. So the new convolution is strictly decreasing on $(0,(H+L)/2)$ and has trivial plateau. The lengths satisfy these conditions at every step: $b_3=\phi^2=b_1+b_2$ (with equality $L=H$) exceeds the plateau $\phi-1$, and for $j\ge4$, $b_j=\phi^{j-1}<\phi^j-\phi=\sum_{i<j}b_i$. Hence $f$ is strictly increasing on $(0,c)$ after recentring, that is $f'>0$ there.
+
+For the curvature, let $L=b_n$, $M=b_{n-1}$, and let $h$ be the centred convolution of the first $n-2$ intervals, with total length $H=\sum_{j\le n-2}b_j=\phi^{n-1}-\phi=L-\phi$. Differentiating the last two convolutions twice and using symmetry,
+\[
+ f''(c)=2\big(h((L+M)/2)-h((L-M)/2)\big).
+\]
+Here $(L+M)/2\ge H/2$, so the first term vanishes, while $L-M=\phi^{n-3}<\phi^{n-1}-\phi=H$ for $n\ge4$, so $h((L-M)/2)>0$. Thus $f''(c)<0$, and by continuity $f''<0$ on a neighbourhood $[c-\varepsilon,c+\varepsilon]$.
+
+Now choose $0<\eta<\varepsilon$. By uniform convergence, for large $m$: $\Delta p_k>0$ whenever $k/T\in[1,c-\eta]$, and $\Delta^2p_k<0$ whenever $k/T\in[c-\varepsilon,c+\varepsilon]$. For $0\le k<T$ no numerator factor has entered, and $\Delta p_k$ is the coefficient of $q^k$ in $1/\prod_{j=2}^n(1-q^{F_j})$, which is at least one because $F_2=1$. The centre index $K=\lfloor\deg P_{m,n}/2\rfloor$ satisfies $K/T\to c$. By symmetry $\Delta p_{K+1}=-\Delta p_K$ when the degree is even and $\Delta p_{K+1}=0$ when it is odd; in both cases $\Delta^2p_{K+1}<0$ forces $\Delta p_K>0$. Moving down from $K$ to $(c-\varepsilon)T$, each step uses $\Delta p_k=\Delta p_{k+1}-\Delta^2p_{k+1}>\Delta p_{k+1}$, so all these first differences are positive. Together with the two ranges above this covers every index up to the centre.
+\end{proof}
+
+\begin{remark}[Effectivity]
+Every limit in the proof can be made quantitative: the partial-fraction error terms are explicit on residue classes modulo $\operatorname{lcm}(F_1,\ldots,F_n)$, the limiting spline has explicit algebraic knots, and positivity of a spline on an interval can be certified by Bernstein coefficients after subdivision. Section~\ref{sec:cert} carries this out for $n=5,6,7$ and also checks every smaller $m$ exactly. We expect the same procedure to terminate for every fixed $n$, but we do not prove a bound on its running time or on $m_0(n)$.
+\end{remark}
+
+\section{Width four}\label{sec:width4}
+This section gives a short analytic proof of the conjecture when the smaller index is four.
+
+\begin{theorem}\label{thm:width4}
+$P_{m,4}$ is unimodal for every $m\ge1$, and for $m\ge5$ its coefficients increase strictly up to the centre.
+\end{theorem}
+\begin{proof}
+For $m\le3$ this is the case $n\le3$ of \cite[Thm.~1.2]{connelly}, by symmetry. Let $m\ge4$ and put $A=F_{m+1}$, $B=F_{m+2}$. The numerator exponents are $A,B,A+B,A+2B$, the denominators are $F_1,\ldots,F_4=1,1,2,3$, and the centre index is $K=\lfloor(3A+4B-7)/2\rfloor$. Expanding $(1-q^A)(1-q^B)(1-q^{A+B})(1-q^{A+2B})$ and discarding terms of degree above $K$ leaves $1-q^A-q^B+q^{2A+B}$: the two terms of degree $A+B$ cancel, as do the two of degree $A+2B$, and every other term has degree at least $\min(2A+2B,A+3B)>K$, while $2A+B\le K$ because $A+7\le2B$. Let $\pi(x)$ be the number of partitions of $x$ into parts $1,2,3$, with $\pi(x)=0$ for $x<0$. Classically $\pi(x)$ is the integer nearest to $(x+3)^2/12$. Since $(1-q)P_{m,4}=\prod_j(1-q^{F_{m+j}})/\big((1-q)(1-q^2)(1-q^3)\big)$, for $0\le k\le K$
+\[
+ \Delta p_k=\pi(k)-\pi(k-A)-\pi(k-B)+\pi(k-2A-B).
+\]
+For $k<A$ this is $\pi(k)\ge1$. For $A\le k<B$ it is $\pi(k)-\pi(k-A)\ge1$: adding $A$ parts equal to one maps the partitions of $k-A$ injectively into those of $k$, and a partition of $k$ into parts $2$ and $3$ only (which exists since $k\ge2$) is not in the image.
+
+Suppose $A>24$, that is $m\ge8$. For $B\le k<2A+B$, twelve times the sum of the three unrounded terms is $2AB-(k+3-A-B)^2\ge2AB-(A+2)^2\ge A^2-4A-4>18$, while rounding changes the unscaled sum by at most $3/2$. For $2A+B\le k\le K$, twelve times the sum of the four unrounded terms is $A(3A+4B-2k-6)\ge A$, and $A/12>2$ exceeds the rounding error of four terms. So $\Delta p_k\ge1$ for all $0\le k\le K$ when $m\ge8$. For $m=4,5,6,7$ the exact formula gives $K=20,34,58,96$ and $\min_{0\le k\le K}\Delta p_k=0,1,1,1$ respectively.
+\end{proof}
+
+\section{Exact certificates in widths five, six and seven}\label{sec:cert}
+This section turns the proof of Theorem~\ref{thm:fixed} into an exact computation for $n=5,6,7$ and checks all smaller $m$ exactly, proving the following theorem.
+
+\begin{theorem}\label{thm:width57}
+For $n\in\{5,6,7\}$ and every $m\ge n$, the coefficients of $P_{m,n}$ increase strictly up to the centre. Consequently $P_{m,n}$ is unimodal whenever $\min(m,n)\le7$, and strictly increasing up to the centre whenever $4\le\min(m,n)\le7$ and $(m,n)\ne(4,4)$.
+\end{theorem}
+The second sentence follows from the first, symmetry, Theorem~\ref{thm:width4} and \cite[Thm.~1.2]{connelly}. The certificate for the first sentence has two parts, separated by a threshold $M$ (Table~\ref{tab:cert}).
+
+\paragraph{Residue polynomials.} Let $\Pi=\operatorname{lcm}(F_1,\ldots,F_n)$, which is $30,120,1560$ for $n=5,6,7$. For $r=1,2$ let $h_r(k)=[q^k]K_r(q)$, where $K_r=1/\prod_{j=r+1}^n(1-q^{F_j})$ is the series of Theorem~\ref{thm:fixed} after cancelling $r$ unit weights, and $h_r(k)=0$ for $k<0$. Since every pole of $K_r$ is a root of unity of order dividing $\Pi$, on each residue class $k\equiv\rho\pmod\Pi$ with $k\ge0$ the function $h_r$ is a polynomial in $(k-\rho)/\Pi$ of degree $d_r=n-1-r$, with leading coefficient $L_r=1/(d_r!\prod_{j>r}F_j)$ in $k$. The program interpolates these polynomials exactly from the first $d_r+1$ values in each class, checks them against direct counts far beyond the interpolation points, and computes a constant $C_r$, maximised over residue classes, with $|h_r(k)/L_r-k^{d_r}|\le C_r(k+1)^{d_r-1}$ for all $k\ge0$ (the sum of the absolute values of the lower coefficients).
+
+\paragraph{Part A: $n\le m<M$, exact.} Here $\Delta p_k=\sum_{S\subseteq[1,n]}(-1)^{|S|}h_1(k-\sigma_S)$ with $\sigma_S=\sum_{j\in S}F_{m+j}$. Split $[0,\lfloor\deg P_{m,n}/2\rfloor]$ at every knot $\sigma_S$ and into residue classes modulo $\Pi$. On each resulting arithmetic progression $k=k_0+\Pi u$ the set of active knots is fixed, so $\Delta p_k$ is an integer-valued polynomial in $u$ of degree $n-2$. The program finds its exact minimum over the progression: it splits the range recursively at the sign changes of successive forward differences, located by binary search on pieces where the next difference has constant sign, so that the polynomial is monotone between consecutive split points. All arithmetic is in integers. The minimum over all progressions is $1$ for every $n\le m<M$.
+
+\paragraph{Part B: $m\ge M$, limiting spline with explicit errors.} Write $T=F_{m+1}$ and $\beta=F_{m+2}/T$. Then $F_{m+j}/T=v_j(\beta)$ with $v_1=1$ and $v_j(\beta)=F_{j-2}+F_{j-1}\beta$ for $j\ge2$. Fix $\beta_*=F_{M+1}/F_M$. All ratios $F_{k+1}/F_k$ with $k\ge M+1$ lie between $F_{M+2}/F_{M+1}$ and $F_{M+3}/F_{M+2}$, so $|\beta-\beta_*|\le\delta$, the larger of the two distances from $\beta_*$, and every knot $\sum_{j\in S}v_j$ moves by at most $(F_{n+1}-1)\delta$. Define
+\[
+ S_r(x)=\sum_{S\subseteq[1,n]}(-1)^{|S|}\Big(x-\sum_{j\in S}v_j(\beta_*)\Big)_+^{d_r},\qquad c_*=\tfrac12\sum_jv_j(\beta_*).
+\]
+For $0\le x=k/T\le X=c_*+\varepsilon_2+1$, comparing each of the $2^n$ translates first with its residue polynomial and then with the knot at $\beta_*$ gives
+\[
+ \Big|\frac{\Delta^rp_k}{L_rT^{d_r}}-S_r(x)\Big|\le 2^nd_rX^{d_r-1}(F_{n+1}-1)\delta+\frac{2^nC_r(X+1)^{d_r-1}}{F_{M+1}}.
+\]
+The program certifies $S_1\ge\mu_1$ on $[1,c_*-\varepsilon_1]$ and $-S_2\ge\mu_2$ on $[c_*-\varepsilon_2,c_*+\varepsilon_2]$, with $\varepsilon_1=1/8$ and $\varepsilon_2=1/4$, by splitting at the knots, expanding each polynomial piece in its Bernstein basis over a rational interval and bisecting until all Bernstein coefficients are positive; the smallest of them is a certified lower bound. All of this is exact rational arithmetic. In every case $\mu_r$ exceeds the error bound, by a factor of at least seven (Table~\ref{tab:cert}). Thus $\Delta p_k>0$ for $T\le k\le(c_*-\varepsilon_1)T$ and $\Delta^2p_k<0$ for $|k/T-c_*|\le\varepsilon_2$. The program also checks that the centre index $K=\lfloor\deg P_{m,n}/2\rfloor$ and $K+1$, divided by $T$, lie within $(\varepsilon_2-\varepsilon_1)/2<\varepsilon_2$ of $c_*$. The argument at the end of the proof of Theorem~\ref{thm:fixed} then gives strict increase up to the centre for every $m\ge M$.
+
+\begin{table}[ht]\centering
+\[
+\begin{array}{c|r|r|r|r|r|r}
+ n & \Pi & M & \mu_1 & \text{error }(r=1) & \mu_2 & \text{error }(r=2)\\\hline
+ 5 & 30 & 50 & 1 & 4.8\times10^{-5} & 3.236 & 1.2\times10^{-6}\\
+ 6 & 120 & 60 & 1 & 9.2\times10^{-4} & 25.41 & 1.3\times10^{-5}\\
+ 7 & 1560 & 70 & 1 & 0.13 & 430.6 & 8.8\times10^{-4}
+\end{array}
+\]
+\caption{Certificate data. $\Pi$: period of the residue polynomials; $M$: threshold between the exact range and the spline range; $\mu_r$: certified Bernstein lower bounds; error: the bound displayed in Part~B, rounded up; $\mu_2$ rounded down.}\label{tab:cert}
+\end{table}
+
+As independent checks, the program expands $P_{m,n}$ densely for $n\le m\le n+5$ and compares the minima with Part~A, and the same program reproduces the width-four results of Theorem~\ref{thm:width4} (minima $0$ at $m=4$ and $1$ for $5\le m<30$, spline range $m\ge30$).
+
+\section{Open problems}\label{sec:open}
+This section lists what the results leave open.
+\begin{enumerate}
+\item \emph{A combinatorial model.} Find explicit regular sequences, with explicit Gr\"obner bases, for all pairs $(m,n)$, generalising Example~\ref{ex:104}, or a weight-preserving statistic on the path-domino tilings of \cite{bck}. Either would answer \cite[Open Problems~4.3 and~5.4]{bck} in the intended sense. A model in which each relation is a pure power of a distinct variable exists only when the denominator indices can be matched injectively to numerator indices that they divide; this fails for most pairs (for example $(10,4)$).
+\item \emph{Unimodality in general.} Prove \cite[Conj.~2.5]{bck} for all pairs. Theorem~\ref{thm:fixed} with an effective $m_0(n)$ would reduce each fixed width to a finite computation.
+\item \emph{Twisted and reducible Coxeter quotients.} Classify polynomiality and positivity for the Galois-twisted products of the non-crystallographic types at shifts $a\not\equiv\pm1\pmod h$, and for reducible groups, where poles can cancel between components.
+\end{enumerate}
+
+\section{Computations and reproducibility}\label{sec:repro}
+This section lists the programs that support the finite steps. All use only the Python standard library and exact integer or rational arithmetic, and every check raises an exception on failure, also when Python runs with assertions disabled.
+\begin{itemize}
+\item \texttt{verify\_type\_a.py}: Theorem~\ref{thm:typeA} for $104$ pairs, with the support test on $8695$ subsets including the trimmed quotients of Theorem~\ref{thm:density}; Example~\ref{ex:104}; the width-four difference formula for $4\le m\le12$; and Corollary~\ref{cor:lucas} for $60$ pairs and four parameter choices.
+\item \texttt{verify\_exceptional.py} and \texttt{verify\_pairs.py}: the two finite certificates for the exceptional types.
+\item \texttt{verify\_classical.py}: direct expansion of $187$ classical and dihedral cases of Theorem~\ref{thm:cox}.
+\item \texttt{width\_cert.py}: the certificates of Section~\ref{sec:cert} for $n=4,5,6,7$.
+\item \texttt{replay.py}: reruns all of the above and compares with the stored outputs (about five minutes, dominated by width seven).
+\item \texttt{claims.py}: the numerical statements of Section~\ref{sec:intro}, Remark~\ref{rem:gly}, Section~\ref{sec:lucas}, Corollary~\ref{cor:fuss}, Remark~\ref{rem:shift} and Theorem~\ref{thm:density}.
+\end{itemize}
+The proofs of Theorems~\ref{thm:typeA}, \ref{thm:density}, \ref{thm:fixed} and~\ref{thm:width4}, of Corollary~\ref{cor:lucas} and of the infinite families in Theorem~\ref{thm:cox} are analytic; the programs there serve as cross-checks. The exceptional rows of Theorem~\ref{thm:cox} and Theorem~\ref{thm:width57} depend on the programs.
+
+\paragraph{Use of AI.} The research, proofs, programs and text were produced with substantial assistance from AI systems, and were checked by AI-assisted review and by rerunning every program. No proof-assistant formalisation has been made, and the work has not been refereed.
+
+\begin{thebibliography}{10}
+\bibitem{armstrong} D. Armstrong. Generalized noncrossing partitions and combinatorics of Coxeter groups. \emph{Mem. Amer. Math. Soc.} 202 (2009), no.~949. \url{https://doi.org/10.1090/S0065-9266-09-00565-1}. arXiv:math/0611106.
+\bibitem{bs} M. Bender and P.-J. Spaenlehauer. Dimension results for extremal-generic polynomial systems over complete toric varieties. \emph{J. Algebra} 646 (2024), 156--182. \url{https://doi.org/10.1016/j.jalgebra.2024.01.029}. arXiv:2305.07439.
+\bibitem{bcms} C. Bennett, J. Carrillo, J. Machacek and B. E. Sagan. Combinatorial interpretations of Lucas analogues of binomial coefficients and Catalan numbers. \emph{Ann. Comb.} 24 (2020), 503--530. \url{https://doi.org/10.1007/s00026-020-00500-9}. arXiv:1809.09036.
+\bibitem{bck} N. Bergeron, C. Ceballos and J. K\"ustner. Elliptic and $q$-analogs of the Fibonomial numbers. \emph{SIGMA} 16 (2020), 076. \url{https://doi.org/10.3842/SIGMA.2020.076}.
+\bibitem{billey} S. C. Billey and J. P. Swanson. Cyclotomic generating functions. \emph{Electron. J. Combin.} 31(4) (2024), P4.4. \url{https://doi.org/10.37236/12687}. arXiv:2305.07620.
+\bibitem{connelly} B. B. Connelly, E. Ito, T. C. Martinez, O. Shevchenko and K. Yang. Unimodality of $q$-Fibonomial coefficients for small cases. Preprint (2026). arXiv:2605.12822.
+\bibitem{gly} M. Gatzweiler, F. Levic\'an-Santib\'a\~nez and A. Yoshida. Cyclotomic generating functions, empty weighted complete intersections and positivity. Preprint (2026). arXiv:2603.22226.
+\bibitem{st} B. E. Sagan and J. Tirrell. Lucas atoms. \emph{Adv. Math.} 374 (2020), 107387. \url{https://doi.org/10.1016/j.aim.2020.107387}. arXiv:1909.02593.
+\bibitem{sz} R. P. Stanley and F. Zanello. Some asymptotic results on $q$-binomial coefficients. \emph{Ann. Comb.} 20 (2016), 623--634. \url{https://doi.org/10.1007/s00026-016-0319-8}. arXiv:1503.06367.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,86 @@
+{
+ "title": "Rational Fibonacci–Catalan polynomials: positivity, a Coxeter classification and q-Fibonomial unimodality up to width seven",
+ "upload_type": "publication",
+ "publication_type": "preprint",
+ "description": "<p><strong>Unrefereed research candidate.</strong> Replace each whole number j in a binomial coefficient or a rational Catalan number by the Fibonacci number F<sub>j</sub>, and each number u by the q-integer [u]<sub>q</sub> = 1 + q + &hellip; + q<sup>u&minus;1</sup>. The results are the q-Fibonomial coefficients P<sub>m,n</sub>(q) and the rational q-Fibonacci&ndash;Catalan functions C<sub>m,n</sub>(q) of Bergeron, Ceballos and K&uuml;stner (SIGMA, 2020). For example C<sub>4,3</sub>(q) = 1 + q + 2q<sup>2</sup> + 2q<sup>3</sup> + 3q<sup>4</sup> + 2q<sup>5</sup> + 3q<sup>6</sup> + 2q<sup>7</sup> + 2q<sup>8</sup> + q<sup>9</sup> + q<sup>10</sup>.</p><p><strong>What was known.</strong> C<sub>m,n</sub> is a polynomial when gcd(m,n) &le; 2 (S. X. Li). Bergeron, Ceballos and K&uuml;stner observed nonnegative coefficients for m, n &le; 15, asked what they count, and conjectured that P<sub>m,n</sub> is unimodal. Unimodality, which implies the nonnegativity (Aliniaeifard; Connelly, Ito, Martinez, Shevchenko and Yang), was known for smaller index at most three. A criterion of Gatzweiler, Levic&aacute;n-Santib&aacute;&ntilde;ez and Yoshida gives nonnegativity for widely separated indices (m &ge; 2n &minus; 3 when n &ge; 7), leaving about half of the pairs open.</p><p><strong>Results.</strong> (1) For every pair (m,n) the reduced denominator of C<sub>m,n</sub> is exactly [F<sub>gcd(m,n)</sub>]<sub>q</sub>, and the reduced numerator is the Hilbert series of an Artinian weighted complete intersection; so C<sub>m,n</sub> has nonnegative coefficients whenever gcd(m,n) &le; 2. (2) The same holds for Lucas sequences with coprime positive integer parameters (for example Pell numbers). (3) For the analogous Fibonacci quotient of every irreducible finite reflection group, the shifts that give a polynomial are determined exactly, and every such polynomial has nonnegative coefficients; every Fibonacci Fuss&ndash;Coxeter&ndash;Catalan quotient is positive, and the coprimality condition suggested in the 2020 paper is too strong in types B and D. (4) P<sub>m,n</sub> is unimodal whenever the smaller index is at most seven, on an explicit set of pairs of density about 0.408, and, with strict increase to the centre, for each fixed smaller index n &ge; 4 once the larger index is large.</p><p><strong>Method.</strong> The quotient is a product of factors (1 &minus; q<sup>e</sup>)/(1 &minus; q<sup>w</sup>); a semigroup criterion decides when such a product is a complete-intersection Hilbert series, and strong divisibility of Fibonacci numbers with a coin-problem bound verifies it uniformly when the indices are close. For unimodality the coefficient profile approaches a spline built from intervals of lengths 1, &phi;, &phi;<sup>2</sup>, &hellip;, which is strictly peaked; exact rational arithmetic turns this into a proof for widths five to seven.</p><p><strong>Limits.</strong> The algebra gives a basis but not a combinatorial interpretation on the original path-domino tilings, so the 2020 open problem in its intended sense remains open. The unrestricted unimodality conjecture remains open. Widths five to seven and the exceptional reflection groups rest on exact computer certificates. Galois-twisted non-crystallographic and reducible cases are not treated.</p><p><strong>Contents.</strong> The paper (LaTeX source and PDF) and seven standard-library Python programs with their recorded outputs: verify_type_a.py, verify_exceptional.py, verify_pairs.py, verify_classical.py, claims.py, width_cert.py and replay.py (reruns all nine certificate runs and compares, about five minutes). Every check raises an error on failure, also under python -O. Also included: the bibliography, a machine-readable index, a research-gate record, a review summary, a replay receipt and SHA-256 sums.</p><p><strong>Assurance.</strong> Written proofs with exact computer certificates. Internal AI-assisted review only: a combined five-role Claude review panel, one revision round with extensions, a verification re-review with a proof audit of every new or rewritten proof, and clean replays with negative controls. No Astra/Codex review took place. This is not peer review, independent reproduction or formal verification. Creator: Anonymous. Text CC0-1.0; code MIT.</p>",
+ "creators": [
+  {
+   "name": "Anonymous"
+  }
+ ],
+ "access_right": "open",
+ "license": "cc-zero",
+ "version": "0.1.0-candidate",
+ "publication_date": "2026-11-25",
+ "keywords": [
+  "Fibonacci numbers",
+  "q-Fibonomial coefficients",
+  "rational Catalan numbers",
+  "q-analogues",
+  "positivity",
+  "unimodality",
+  "weighted complete intersection",
+  "Hilbert series",
+  "Coxeter groups",
+  "Lucas sequences",
+  "cyclotomic generating functions"
+ ],
+ "notes": "Code (*.py and the CI workflow) is MIT; prose, manuscript, recorded outputs and records are CC0-1.0.",
+ "related_identifiers": [
+  {
+   "identifier": "https://github.com/ipitchford/rational-fibonacci-catalan-positivity/tree/v0.1.0-candidate",
+   "relation": "isSupplementTo",
+   "scheme": "url"
+  },
+  {
+   "identifier": "https://evidencepress.org/releases/rational-fibonacci-catalan-positivity/",
+   "relation": "isDocumentedBy",
+   "scheme": "url"
+  },
+  {
+   "identifier": "10.1090/s0065-9266-09-00565-1",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1016/j.jalgebra.2024.01.029",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1007/s00026-020-00500-9",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.3842/sigma.2020.076",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.37236/12687",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1016/j.aim.2020.107387",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1007/s00026-016-0319-8",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "arXiv:2605.12822",
+   "relation": "references",
+   "scheme": "arxiv"
+  },
+  {
+   "identifier": "arXiv:2603.22226",
+   "relation": "references",
+   "scheme": "arxiv"
+  }
+ ]
+}

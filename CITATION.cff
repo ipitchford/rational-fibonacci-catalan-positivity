@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using these metadata."
+type: software
+title: "Rational Fibonacci–Catalan polynomials: positivity, a Coxeter classification and q-Fibonomial unimodality up to width seven"
+abstract: "Unrefereed research candidate. For every pair (m,n), the reduced denominator of the rational q-Fibonacci–Catalan function C_{m,n} is exactly [F_gcd(m,n)]_q and the reduced numerator is the Hilbert series of an Artinian weighted complete intersection, so C_{m,n} has nonnegative coefficients whenever gcd(m,n) <= 2. The same holds for Lucas sequences with coprime positive parameters. For the Fibonacci quotient of every irreducible finite reflection group the polynomial shifts are classified and all are positive. The q-Fibonomial coefficients are unimodal whenever the smaller index is at most seven, on a set of density about 0.408, and for each fixed width once the larger index is large."
+authors:
+  - name: "Anonymous"
+version: "0.1.0-candidate"
+date-released: "2026-11-25"
+doi: "10.5281/zenodo.24541015"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24541015"
+    description: "This version"
+  - type: doi
+    value: "10.5281/zenodo.24541014"
+    description: "All versions (concept DOI)"
+repository-code: "https://github.com/ipitchford/rational-fibonacci-catalan-positivity"
+url: "https://evidencepress.org/releases/rational-fibonacci-catalan-positivity/"
+license: CC0-1.0
+keywords:
+  - Fibonacci numbers
+  - q-Fibonomial coefficients
+  - rational Catalan numbers
+  - positivity
+  - unimodality
+  - weighted complete intersection
+preferred-citation:
+  type: article
+  title: "Rational Fibonacci–Catalan polynomials: positivity, a Coxeter classification and q-Fibonomial unimodality up to width seven"
+  authors:
+    - name: "Anonymous"
+  year: 2026
+  doi: "10.5281/zenodo.24541015"
+  publisher:
+    name: "Zenodo"
+  notes: "Version 0.1.0-candidate; unrefereed"

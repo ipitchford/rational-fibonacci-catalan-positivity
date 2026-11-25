@@ -1,0 +1,1 @@
+187 classical and dihedral parameter checks passed. B3 at a=3 gives [21]_q.

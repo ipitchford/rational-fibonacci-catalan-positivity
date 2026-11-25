@@ -1,0 +1,6 @@
+All programs need only Python 3.9 or later (standard library). Reference run: CPython 3.14.7
+(macOS arm64, via `uv run --python 3.12`, which resolved to 3.14.7 on this machine).
+Replay from the package root:   python3 -I -O code/replay.py
+Expected: nine PASS lines, then "All nine certificate programs completed."  Run time about five
+minutes, almost all in width_cert.py 7 70. All arithmetic is exact (integers and fractions), so
+outputs are platform independent; the width_*.json "seconds" fields are ignored by the comparison.

@@ -1,0 +1,220 @@
+{
+ "schemaVersion": "1.0",
+ "provenance": "Compiled 25 November 2026 for 0.1.0-candidate from the dated searches of the internal AI-assisted review (24 November 2026), the source retrieval and reading record, the corpus overlap check, refs.bib, REVIEW_SUMMARY.md and the paper's own positioning (Sections 1 and 10). It records scrutiny performed, not historical priority.",
+ "contributionMap": [
+  {
+   "claim": "For every pair (m,n) the reduced denominator of C_{m,n} is exactly [F_gcd(m,n)]_q and the reduced numerator is the Hilbert series of an Artinian weighted complete intersection; so C_{m,n} has nonnegative coefficients whenever gcd(m,n) <= 2 (the nonnegativity observed by Bergeron-Ceballos-Kuestner for m, n <= 15)",
+   "unit": "statement",
+   "paperLocation": "abstract; Theorem 3.1; Remark 3.2",
+   "searches": [
+    {
+     "date": "2026-11-24",
+     "corpus": "arXiv and general web searches by the internal review panel (Semantic Scholar rate-limited, so bounded), the bundle prior-art note, citing works of Bergeron-Ceballos-Kuestner found during source retrieval (including F. Bergeron, arXiv:2608.30979, which does not settle the problem), and the Evidence Press corpus (site papers/ and the batch corpus list)",
+     "query": "q-Fibonacci Catalan nonnegative coefficients; FiboCatalan positivity; q-Fibonomial unimodality; Bergeron Ceballos Kuestner Open Problem 4.3; rational Fibonacci Catalan polynomial complete intersection; Fibonacci Coxeter Catalan positivity"
+    },
+    {
+     "date": "2026-11-24",
+     "corpus": "the cited works, obtained and read: Bergeron-Ceballos-Kuestner (SIGMA 2020), Connelly-Ito-Martinez-Shevchenko-Yang (arXiv:2605.12822), Gatzweiler-Levican-Santibanez-Yoshida (arXiv:2603.22226), Bender-Spaenlehauer (arXiv:2305.07439), Billey-Swanson (arXiv:2305.07620), Bennett-Carrillo-Machacek-Sagan (arXiv:1809.09036), Sagan-Tirrell (arXiv:1909.02593), Stanley-Zanello (arXiv:1503.06367), Armstrong (arXiv:math/0611106)",
+     "query": "BCK Thm 2.4, Conj. 2.5, Prop. 4.2, Open Problem 4.3, Remarks 4.4-4.5, Open Problem 5.4; Connelly Thm 1.2, Prop. 5.6, Problems 5.7-5.8; GLY Prop. 3.3, Thm 3.9, Remark 3.12; Bender-Spaenlehauer Thm 3.8; Billey-Swanson Section 6.3 and Lemma 52; Armstrong Fig. 2.7"
+    }
+   ],
+   "closestPriorWork": "BCK Prop. 4.2 (polynomiality, due to S. X. Li) and Open Problem 4.3; GLY Thm 3.9 (separated degrees, m >= 2n-3 for n >= 7); Connelly et al. Thm 1.2 with Prop. 5.6 (n <= 3)",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "no prior proof for the comparable range n <= m <= 2n-4 or of the exact denominator found; GLY anticipated such cases (their Remark 3.12)"
+  },
+  {
+   "claim": "Lucas sequences with coprime positive integer parameters: reduced denominator [U_gcd]_q and complete-intersection numerator",
+   "unit": "statement",
+   "paperLocation": "Corollary 4.1",
+   "searches": [
+    {
+     "date": "2026-11-24",
+     "corpus": "arXiv and general web searches by the internal review panel (Semantic Scholar rate-limited, so bounded), the bundle prior-art note, citing works of Bergeron-Ceballos-Kuestner found during source retrieval (including F. Bergeron, arXiv:2608.30979, which does not settle the problem), and the Evidence Press corpus (site papers/ and the batch corpus list)",
+     "query": "q-Fibonacci Catalan nonnegative coefficients; FiboCatalan positivity; q-Fibonomial unimodality; Bergeron Ceballos Kuestner Open Problem 4.3; rational Fibonacci Catalan polynomial complete intersection; Fibonacci Coxeter Catalan positivity"
+    },
+    {
+     "date": "2026-11-24",
+     "corpus": "the cited works, obtained and read: Bergeron-Ceballos-Kuestner (SIGMA 2020), Connelly-Ito-Martinez-Shevchenko-Yang (arXiv:2605.12822), Gatzweiler-Levican-Santibanez-Yoshida (arXiv:2603.22226), Bender-Spaenlehauer (arXiv:2305.07439), Billey-Swanson (arXiv:2305.07620), Bennett-Carrillo-Machacek-Sagan (arXiv:1809.09036), Sagan-Tirrell (arXiv:1909.02593), Stanley-Zanello (arXiv:1503.06367), Armstrong (arXiv:math/0611106)",
+     "query": "BCK Thm 2.4, Conj. 2.5, Prop. 4.2, Open Problem 4.3, Remarks 4.4-4.5, Open Problem 5.4; Connelly Thm 1.2, Prop. 5.6, Problems 5.7-5.8; GLY Prop. 3.3, Thm 3.9, Remark 3.12; Bender-Spaenlehauer Thm 3.8; Billey-Swanson Section 6.3 and Lemma 52; Armstrong Fig. 2.7"
+    }
+   ],
+   "closestPriorWork": "Bennett-Carrillo-Machacek-Sagan and Sagan-Tirrell (different, two-parameter polynomial Lucas analogues)",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "different objects from the cited Lucas analogues (Remark 4.3)"
+  },
+  {
+   "claim": "Fibonacci quotient of every irreducible finite reflection group: exact list of shifts giving a polynomial, all positive; every Fuss shift admissible; the coprimality condition of BCK Remark 4.5 is too strong in types B and D",
+   "unit": "statement",
+   "paperLocation": "Theorem 5.1; Corollary 5.2",
+   "searches": [
+    {
+     "date": "2026-11-24",
+     "corpus": "arXiv and general web searches by the internal review panel (Semantic Scholar rate-limited, so bounded), the bundle prior-art note, citing works of Bergeron-Ceballos-Kuestner found during source retrieval (including F. Bergeron, arXiv:2608.30979, which does not settle the problem), and the Evidence Press corpus (site papers/ and the batch corpus list)",
+     "query": "q-Fibonacci Catalan nonnegative coefficients; FiboCatalan positivity; q-Fibonomial unimodality; Bergeron Ceballos Kuestner Open Problem 4.3; rational Fibonacci Catalan polynomial complete intersection; Fibonacci Coxeter Catalan positivity"
+    },
+    {
+     "date": "2026-11-24",
+     "corpus": "the cited works, obtained and read: Bergeron-Ceballos-Kuestner (SIGMA 2020), Connelly-Ito-Martinez-Shevchenko-Yang (arXiv:2605.12822), Gatzweiler-Levican-Santibanez-Yoshida (arXiv:2603.22226), Bender-Spaenlehauer (arXiv:2305.07439), Billey-Swanson (arXiv:2305.07620), Bennett-Carrillo-Machacek-Sagan (arXiv:1809.09036), Sagan-Tirrell (arXiv:1909.02593), Stanley-Zanello (arXiv:1503.06367), Armstrong (arXiv:math/0611106)",
+     "query": "BCK Thm 2.4, Conj. 2.5, Prop. 4.2, Open Problem 4.3, Remarks 4.4-4.5, Open Problem 5.4; Connelly Thm 1.2, Prop. 5.6, Problems 5.7-5.8; GLY Prop. 3.3, Thm 3.9, Remark 3.12; Bender-Spaenlehauer Thm 3.8; Billey-Swanson Section 6.3 and Lemma 52; Armstrong Fig. 2.7"
+    }
+   ],
+   "closestPriorWork": "BCK Remark 4.5 (computed examples and a suggested condition)",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "corrects the suggested condition; exceptional rows by exact certificates"
+  },
+  {
+   "claim": "q-Fibonomial unimodality (BCK Conj. 2.5) on a set of density about 0.408, for each fixed n >= 4 once m is large, and whenever min(m,n) <= 7",
+   "unit": "statement",
+   "paperLocation": "Theorems 6.1, 7.1, 8.1, 9.1",
+   "searches": [
+    {
+     "date": "2026-11-24",
+     "corpus": "arXiv and general web searches by the internal review panel (Semantic Scholar rate-limited, so bounded), the bundle prior-art note, citing works of Bergeron-Ceballos-Kuestner found during source retrieval (including F. Bergeron, arXiv:2608.30979, which does not settle the problem), and the Evidence Press corpus (site papers/ and the batch corpus list)",
+     "query": "q-Fibonacci Catalan nonnegative coefficients; FiboCatalan positivity; q-Fibonomial unimodality; Bergeron Ceballos Kuestner Open Problem 4.3; rational Fibonacci Catalan polynomial complete intersection; Fibonacci Coxeter Catalan positivity"
+    },
+    {
+     "date": "2026-11-24",
+     "corpus": "the cited works, obtained and read: Bergeron-Ceballos-Kuestner (SIGMA 2020), Connelly-Ito-Martinez-Shevchenko-Yang (arXiv:2605.12822), Gatzweiler-Levican-Santibanez-Yoshida (arXiv:2603.22226), Bender-Spaenlehauer (arXiv:2305.07439), Billey-Swanson (arXiv:2305.07620), Bennett-Carrillo-Machacek-Sagan (arXiv:1809.09036), Sagan-Tirrell (arXiv:1909.02593), Stanley-Zanello (arXiv:1503.06367), Armstrong (arXiv:math/0611106)",
+     "query": "BCK Thm 2.4, Conj. 2.5, Prop. 4.2, Open Problem 4.3, Remarks 4.4-4.5, Open Problem 5.4; Connelly Thm 1.2, Prop. 5.6, Problems 5.7-5.8; GLY Prop. 3.3, Thm 3.9, Remark 3.12; Bender-Spaenlehauer Thm 3.8; Billey-Swanson Section 6.3 and Lemma 52; Armstrong Fig. 2.7"
+    }
+   ],
+   "closestPriorWork": "Connelly et al. Thm 1.2 (n <= 3); Stanley-Zanello (fixed-width asymptotics of ordinary Gaussian coefficients)",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "widths five to seven by exact computer certificates"
+  },
+  {
+   "claim": "Method: semigroup (support) criterion for weighted complete intersections, made checkable for Fibonacci degrees by strong divisibility and a coin-problem bound; limiting spline from interval convolutions with exact Bernstein certificates",
+   "unit": "method",
+   "paperLocation": "Sections 2, 3, 7, 9",
+   "searches": [
+    {
+     "date": "2026-11-24",
+     "corpus": "arXiv and general web searches by the internal review panel (Semantic Scholar rate-limited, so bounded), the bundle prior-art note, citing works of Bergeron-Ceballos-Kuestner found during source retrieval (including F. Bergeron, arXiv:2608.30979, which does not settle the problem), and the Evidence Press corpus (site papers/ and the batch corpus list)",
+     "query": "q-Fibonacci Catalan nonnegative coefficients; FiboCatalan positivity; q-Fibonomial unimodality; Bergeron Ceballos Kuestner Open Problem 4.3; rational Fibonacci Catalan polynomial complete intersection; Fibonacci Coxeter Catalan positivity"
+    },
+    {
+     "date": "2026-11-24",
+     "corpus": "the cited works, obtained and read: Bergeron-Ceballos-Kuestner (SIGMA 2020), Connelly-Ito-Martinez-Shevchenko-Yang (arXiv:2605.12822), Gatzweiler-Levican-Santibanez-Yoshida (arXiv:2603.22226), Bender-Spaenlehauer (arXiv:2305.07439), Billey-Swanson (arXiv:2305.07620), Bennett-Carrillo-Machacek-Sagan (arXiv:1809.09036), Sagan-Tirrell (arXiv:1909.02593), Stanley-Zanello (arXiv:1503.06367), Armstrong (arXiv:math/0611106)",
+     "query": "BCK Thm 2.4, Conj. 2.5, Prop. 4.2, Open Problem 4.3, Remarks 4.4-4.5, Open Problem 5.4; Connelly Thm 1.2, Prop. 5.6, Problems 5.7-5.8; GLY Prop. 3.3, Thm 3.9, Remark 3.12; Bender-Spaenlehauer Thm 3.8; Billey-Swanson Section 6.3 and Lemma 52; Armstrong Fig. 2.7"
+    }
+   ],
+   "closestPriorWork": "GLY Prop. 3.3 (criterion, credited there to Pizzato-Sano-Tasin); Bender-Spaenlehauer Thm 3.8; Billey-Swanson Lemma 52; Bernstein-basis positivity certificates (classical)",
+   "verdict": "partially-known-cited",
+   "verdictNote": "criterion and certificate technique are known; the Fibonacci conductor lemma and its uniform application are new in the searched sources"
+  }
+ ],
+ "sourcesReadInFull": [
+  {
+   "citation": "Bergeron, N., Ceballos, C. and Kuestner, J. (2020), Elliptic and q-analogs of the Fibonomial numbers, SIGMA 16, 076",
+   "usedFor": "definitions, Li polynomiality, open problems, unimodality conjecture, Coxeter remark",
+   "readWhat": "whole paper",
+   "date": "2026-11-24",
+   "evidenceLocator": "https://doi.org/10.3842/SIGMA.2020.076"
+  },
+  {
+   "citation": "Connelly, B. B., Ito, E., Martinez, T. C., Shevchenko, O. and Yang, K. (2026), Unimodality of q-Fibonomial coefficients for small cases, arXiv:2605.12822",
+   "usedFor": "unimodality for n <= 3; unimodality implies positivity",
+   "readWhat": "whole paper",
+   "date": "2026-11-24",
+   "evidenceLocator": "https://arxiv.org/abs/2605.12822"
+  },
+  {
+   "citation": "Gatzweiler, M., Levican-Santibanez, F. and Yoshida, A. (2026), Cyclotomic generating functions, empty weighted complete intersections and positivity, arXiv:2603.22226",
+   "usedFor": "support criterion; separated-degree sufficient condition",
+   "readWhat": "whole paper",
+   "date": "2026-11-24",
+   "evidenceLocator": "https://arxiv.org/abs/2603.22226"
+  },
+  {
+   "citation": "Bender, M. and Spaenlehauer, P.-J. (2024), Dimension results for extremal-generic polynomial systems over complete toric varieties, J. Algebra 646",
+   "usedFor": "criterion for shorter sequences",
+   "readWhat": "Section 3",
+   "date": "2026-11-24",
+   "evidenceLocator": "https://doi.org/10.1016/j.jalgebra.2024.01.029"
+  },
+  {
+   "citation": "Billey, S. C. and Swanson, J. P. (2024), Cyclotomic generating functions, Electron. J. Combin. 31(4) P4.4",
+   "usedFor": "regular sequences and finite-dimensional quotients",
+   "readWhat": "Section 6",
+   "date": "2026-11-24",
+   "evidenceLocator": "https://doi.org/10.37236/12687"
+  },
+  {
+   "citation": "Armstrong, D. (2009), Generalized noncrossing partitions and combinatorics of Coxeter groups, Mem. AMS 202, no. 949",
+   "usedFor": "degree table",
+   "readWhat": "Figure 2.7 and surrounding text",
+   "date": "2026-11-24",
+   "evidenceLocator": "https://doi.org/10.1090/S0065-9266-09-00565-1"
+  }
+ ],
+ "limitationTriage": [
+  {
+   "limitation": "No combinatorial interpretation on the original path-domino tilings (BCK Open Problems 4.3 and 5.4 in the intended sense)",
+   "closingQuestion": "Is there an explicit regular sequence with explicit Groebner basis for all pairs?",
+   "triedOrSearched": "attempted in the revision round: pure-power models fail for most pairs (for example (10,4)); no uniform family found",
+   "estimatedCost": "open research",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "Open Problem 1",
+   "whyNotClosedNow": "research-level; stated as open"
+  },
+  {
+   "limitation": "Unrestricted q-Fibonomial unimodality conjecture",
+   "closingQuestion": "Can each fixed width be reduced to a finite computation with an effective m_0(n)?",
+   "triedOrSearched": "widths five to seven certified exactly; effectivity stated as a remark, not proved",
+   "estimatedCost": "open research",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "Open Problem 2",
+   "whyNotClosedNow": "research-level"
+  },
+  {
+   "limitation": "Galois-twisted non-crystallographic and reducible Coxeter quotients",
+   "closingQuestion": "Which twisted or reducible products are polynomial and positive?",
+   "triedOrSearched": "not attempted",
+   "estimatedCost": "weeks",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "Open Problem 3",
+   "whyNotClosedNow": "outside scope"
+  },
+  {
+   "limitation": "Certificate scripts relied on assert in the source bundle",
+   "closingQuestion": "Do the checks fail correctly under python -O?",
+   "triedOrSearched": "check() raising CertificateError everywhere; negative controls (H3 residues; positivity check) exit 1 under -O",
+   "estimatedCost": "hours",
+   "cheap": true,
+   "decision": "CLOSED",
+   "reasonOpen": "",
+   "whyNotClosedNow": ""
+  },
+  {
+   "limitation": "Novelty rests on searches of limited scope (Semantic Scholar rate-limited)",
+   "closingQuestion": "Would further indexes change attribution?",
+   "triedOrSearched": "arXiv and web searches; all cited sources read; a later work citing BCK checked",
+   "estimatedCost": "subscription indexes",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "subscription indexes were outside the searched corpus",
+   "whyNotClosedNow": "recorded here; the paper positions its results against the sources read"
+  }
+ ],
+ "extensionScout": {
+  "by": "the internal review panel, the re-reviewer and the lead",
+  "date": "2026-11-24",
+  "proposals": [
+   "exact certificates for widths six and seven",
+   "Fuss-Catalan corollary for every reflection group",
+   "exact boundary of the separated-degree condition",
+   "explicit combinatorial model by explicit regular sequences",
+   "twisted and reducible Coxeter quotients"
+  ],
+  "actions": [
+   "done: Theorem 9.1",
+   "done: Corollary 5.2",
+   "done: Remark 3.2",
+   "attempted, not landed: Open Problem 1",
+   "not attempted: Open Problem 3"
+  ]
+ }
+}

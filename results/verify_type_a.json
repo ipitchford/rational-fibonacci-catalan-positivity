@@ -1,0 +1,124 @@
+{
+  "full_corrected_pairs": 104,
+  "positive_double_trims": 24,
+  "support_subsets": 8695,
+  "certified_unimodal_pairs": 40,
+  "non_box_objects": 497688,
+  "width4_m4": {
+    "centre": 20,
+    "min_difference": 0
+  },
+  "width4_m5": {
+    "centre": 34,
+    "min_difference": 1
+  },
+  "width4_m6": {
+    "centre": 58,
+    "min_difference": 1
+  },
+  "width4_m7": {
+    "centre": 96,
+    "min_difference": 1
+  },
+  "lucas_pairs": 60,
+  "lucas_support_subsets": 228,
+  "fingerprint_3_2": {
+    "degree": 2,
+    "count": 3,
+    "first": [
+      1,
+      1,
+      1
+    ],
+    "last": [
+      1,
+      1,
+      1
+    ]
+  },
+  "fingerprint_4_3": {
+    "degree": 10,
+    "count": 20,
+    "first": [
+      1,
+      1,
+      2,
+      2,
+      3,
+      2,
+      3,
+      2,
+      2,
+      1,
+      1
+    ],
+    "last": [
+      2,
+      3,
+      2,
+      2,
+      1,
+      1
+    ]
+  },
+  "fingerprint_5_4": {
+    "degree": 36,
+    "count": 364,
+    "first": [
+      1,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      15,
+      15,
+      16,
+      17
+    ],
+    "last": [
+      5,
+      4,
+      3,
+      2,
+      1,
+      1
+    ]
+  },
+  "fingerprint_4_4": {
+    "degree": 22,
+    "count": 260,
+    "first": [
+      1,
+      2,
+      4,
+      6,
+      9,
+      11,
+      14,
+      16,
+      18,
+      19,
+      20,
+      20,
+      20,
+      19,
+      18,
+      16
+    ],
+    "last": [
+      11,
+      9,
+      6,
+      4,
+      2,
+      1
+    ]
+  }
+}
